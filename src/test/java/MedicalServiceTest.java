@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;
 import ru.netology.patient.entity.BloodPressure;
 import ru.netology.patient.entity.HealthInfo;
@@ -65,13 +64,5 @@ public class MedicalServiceTest {
         BloodPressure currentPressure = new BloodPressure(120, 80);
         medicalServiceImpl.checkBloodPressure(patientId, currentPressure);
         Mockito.verify(sendAlertService, Mockito.never()).send(MESSAGE);
-    }
-
-    @Test
-    public void test_get_patient_info() {
-        String patientId = patientInfoRepository.add(PATIENT_INFO);
-        PatientInfo assertion = patientInfoRepository.getById(patientId);
-        PatientInfo expected = PATIENT_INFO;
-        Assertions.assertEquals(expected, assertion);
     }
 }
